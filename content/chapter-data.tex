@@ -92,16 +92,15 @@ Sẽ tạo thành đoạn hội thoại sau:
 \end{displayquote}
 
 \textbf{2. Làm sạch dữ liệu} \\
-
 Đầu tiên chuyển unicode sang ASCII.\\
-%    \centerline{I am Heró \(\mapsto\) I am Hero} \\
-Tiếp đó chuyển tất cả các chữ thành chữ thường và loại bỏ các kí tự không phải chữ cái ( ngoại trừ các dấu câu ).
-%    \centerline{I am Hero  \(\mapsto\) i am hero} \\
-Cuối cùng đễ hỗ trợ training convergence, lọc ra những câu có độ dài vượt ngưỡng 10
-%    \centerline{this sentence is over ten word count bla bla bla bla bla  \(\mapsto\) \emptyset} \\
+    \centerline{\textit{I am Heró \(\mapsto\) I am Hero}} \\
+Tiếp đó chuyển tất cả các chữ thành chữ thường và loại bỏ các kí tự không phải chữ cái ( ngoại trừ các dấu câu ). \\
+    \centerline{\textit{I am Hero  \(\mapsto\) i am hero}} \\
+Cuối cùng đễ hỗ trợ training convergence, lọc ra những câu có độ dài vượt ngưỡng 10 \\
+%    \centerline{\textit{this sentence is over ten word count bla bla bla bla bla  \(\mapsto\ \emptyset) }} \\
 
 \textbf{3. Xây dựng cặp câu vấn đáp} \\
-Với mỗi đoạn hội thoại, lấy 2 câu kế tiếp nhau tạo thành một cặp.//
+Với mỗi đoạn hội thoại, lấy 2 câu kế tiếp nhau tạo thành một cặp.\\
 Như đoạn hội thoại sau
 \begin{displayquote}
     (1) Like my fear of wearing pastels? \\
@@ -118,14 +117,24 @@ phải tạo ra một bằng cách ánh xạ từng từ duy nhất mà chúng t
 Với một bộ dữ liệu khác nhau thì việc ánh xạ sẽ khác nhau.
 
 Việc sẽ bắt đầu xây dựng từ điển bằng việc với 3 ký tự đặc biệt: \\
-%PAD_token = 0  # Used for padding short sentences
-%SOS_token = 1  # Start-of-sentence token
-%EOS_token = 2  # End-of-sentence token
-%\centerline{PAD\detokenize{_}token  \mapsto 0 \textit{  Dùng để chêm vào các câu ngắn}}
+PAD\detokenize{_}token \(\mapsto\) 0 \textit{     Dùng cho các câu ngắn} \\
+SOS\detokenize{_}token \(\mapsto\) 1 \textit{     Đánh dấu bắt đầu câu} \\
+EOS\detokenize{_}token \(\mapsto\) 2 \textit{     Đánh dấu kết thúc câu. Dùng trong thiết lập đầu vào của Decoder} \\
 
+Sau đó với mỗi từ trong cặp hội thoại ta thêm từ đó vào từ điển bằng cách kiểm tra từ điển có từ hay chưa. Nếu có thì
+tăng chỉ số đếm từ là 1, còn chưa thì lưu lại từ và ánh xạ tới số tương ứng. \\
+\begin{figure}[!htb]
+    \center{\includegraphics[width=\figureBigSize]
+    {figure/data/no_padding.png}}
+    \caption{\label{fig:no_padding} Mô tả từ vựng.}
+\end{figure}
+Trong một số trường hợp câu quá ngắn không phù hợp với model thì chêm PAD\detokenize{_}token cho đủ độ dài. \\
+\begin{figure}[!htb]
+    \center{\includegraphics[width=\figureBigSize]
+    {figure/data/padding.png}}
+    \caption{\label{fig:no_padding} Padding.}
+\end{figure}
 Một kĩ thuật khác có lợi để đạt được convergence nhanh hơn trong thời gian training là xóa bỏ các từ không được sử dụng nhiều trong vocabulary. Giảm không gian tính năng cũng sẽ làm giảm bớt độ khó của chức năng model phải học cách gần đúng :
 
 1) Xóa bỏ những từ có số lần sử dụng dưới ngưỡng \\
-%count(adscititious) < 3  \to \varnothing \\
 2) Lọc các cặp đối thoại có từ đã được xóa bỏ trong vocabulary \\
-%[this sentence have adscititious, really] \to \varnothing \\

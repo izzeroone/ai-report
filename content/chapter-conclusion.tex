@@ -2,3 +2,86 @@
 %
 \chapter{Kết quả đạt được}
 \label{sec:conclusion}
+
+\section{Thử nghiệm}
+Một số đoạn hội thoại với chủ đề mở
+\begin{displayquote}
+    > hello ! \\
+    Bot: hello . \\
+    > how are you ? \\
+    Bot: okay . \\
+    > what ’s your name ? \\
+    Bot: pris . \\
+    > when were you born ? \\
+    Bot: tomorrow . \\
+    > what year were you born ? \\
+    Bot: what ? \\
+    > where are you from ? \\
+    Bot: california . \\
+    > are you a man or a woman ? \\
+    Bot: no . \\
+    > why are we here ? \\
+    Bot: i m not leaving . \\
+    > okay, bye ! \\
+    Bot: okay okay . \\
+    > see you later! \\
+    Bot: i m sorry . \\
+\end{displayquote}
+
+\begin{displayquote}
+    > is sky blue or black \\
+    Bot: no . \\
+    > does a cat have a tail \\
+    Bot: no it s not a problem . \\
+    > does a cat have a wing \\
+    Bot: i have a problem . \\
+    > can a cat fly \\
+    Bot: can t you say that ? \\
+    > how many legs does a cat have \\
+    Bot: four hundred five thousand . \\
+    > how many legs does a spider have \\
+    Bot: four . \\
+    > how many legs does a centipede have \\
+    Error: Encountered unknown word. \\
+    > what is the color of the sky \\
+    Bot: what do you mean ? \\
+    > what is the color of water \\
+    Bot: i don t know . \\
+    > what is the color of blood \\
+    Bot: i don t know . \\
+    > what is the color of a yellow car \\
+    Bot: what s that ? \\
+    > how much is two plus two \\
+    Bot: two hundred . \\
+    > how much is ten minus two \\
+    Bot: four hundred . \\
+\end{displayquote}
+
+\begin{displayquote}
+    > what is your job \\
+    Bot: i don t know . \\
+    > what do you do \\
+    Bot: i m sorry . \\
+    > what is the purpose of life \\
+    Bot: i don t know . \\
+    > what is the purpose of living \\
+    Bot: i don t know . \\
+    > what is the purpose of existence \\
+    Bot: i don t know . \\
+    > where are you now \\
+    Bot: i m in the bathroom . \\
+    > what is the purpose of dying \\
+    Bot: i don t know . \\
+    > what is the purpose of being intelligent \\
+    Bot: i don t know . \\
+\end{displayquote}
+
+\section{Đánh giá}
+Model có thể thực hiện các hình thức chào hỏi thông thường. Nhưng các câu hỏi hầu hết đều bị bot bỏ qua . Nếu một
+từ không có trong bộ từ điển thì chatbot khôngthể trả lời được
+
+Model ngôn ngữ đơn giản dựa trên seq2seq này có thể được sử dụng để huấn luyện một chatbot. Kết
+quả cho thấy rằng có thể tạo ra các cuộc hội thoại đơn giản và cơ bản, và trích xuất kiến thức từ một bộ dữ liệu tên
+mở nhưng bị nhiễu. Mặc dù model có những hạn chế rõ ràng, nhưng thật đáng ngạc nhiên đối với chúng tôi rằng cách
+tiếp cận dựa trên dữ liệu mà không có bất kỳ quy tắc nào có thể tạo ra câu trả lời thích hợp cho nhiều loại câu hỏi.
+Tuy nhiên, mô hình có thể yêu cầu sửa đổi đáng kể để có thể cung cấp các cuộc hội thoại thực tế.

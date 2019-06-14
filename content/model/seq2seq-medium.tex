@@ -13,7 +13,7 @@ như Google Dịch, thiết bị hỗ trợ giọng nói và chatbot trực tuy�
     \item Chú thích video - một bài báo năm 2015 cho thấy một seq2seq mang lại kết quả tuyệt vời như thế nào khi tạo
     mô tả phim.
         {\center{\includegraphics[width=\figureBigSize]{figure/model/SEQ-videocaption.png}}}
-    \item Và đặc biệt tại Google I/O 2019 ,Google đã trình làng Translatotron, một công cụ cho phép dịch sang ngôn
+    \item Và đặc biệt tại Google I/O 2019, Google đã trình làng Translatotron, một công cụ cho phép dịch sang ngôn
     ngữ khác mà vẫn giữ được tông giọng của người nói
 \end{itemize}
 
@@ -66,7 +66,7 @@ Như vậy có thế thấy rằng dùng trạng thái ẩn phía trước để
         \[y_t=softmax(W^{s}h_{t})\]
 \end{itemize}
 Tính toán các đầu ra bằng cách sử dụng trạng thái ẩn ở bước thời gian hiện tại cùng với trọng số tương ứng
-\(W(S)\). Softmax được sử dụng để tạo một vectoc xác suất sẽ giúp xác định đầu ra cuối cùng (ví dụ: từ
+\(W(S)\). Softmax được sử dụng để tạo một vector xác suất sẽ giúp xác định đầu ra cuối cùng (ví dụ: từ
 trong bài toán chatbot).
 
 Sức mạnh của mô hình này nằm ở chỗ nó có thể ánh xạ các chuỗi có độ dài khác nhau với nhau. Như bạn có thể thấy đầu

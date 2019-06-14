@@ -11,12 +11,12 @@ Nó không rõ làm thế nào một mạng lưới thần kinh truyền thống
 
 Recurrent neural network giải quyết vấn đề này. Chúng là các mạng có các vòng lặp trong đó, cho phép thông tin tồn tại.
 \begin{figure}[!htb]
-    \center{\includegraphics[width=2cm]
+    \center{\includegraphics[width=4cm]
     {figure/model/RNN-rolled.png}}
     \caption{\label{fig:rnn-rolled} Recurrent Neural Network có vòng lặp.}
 \end{figure}
 
-Trong sơ đồ trên, một đoạn của mạng thần kinh, \(A\), xem xét một số xt đầu vào và xuất ra một giá trị
+Trong sơ đồ trên, một đoạn của mạng thần kinh, \(A\), xem xét một số \(x_t\) đầu vào và xuất ra một giá trị
 \(h_t\).Một vòng lặp cho phép thông tin được truyền từ một bước của mạng sang bước tiếp theo.
 
 Những vòng lặp này làm cho Recurrent neural network có vẻ như bí ẩn.
@@ -77,7 +77,6 @@ người đã tìm thấy một số lý do khá cơ bản tại sao nó có th�
 Rất may, LSTMs không có vấn đề này!
 
 \textbf{Mạng LSTM} \\[0.2em]
-
 Long Short Term Memory (mạng bộ nhớ dài ngắn hạn) - thường được gọi là LSTM của - - là một loại RNN đặc biệt, có khả
 năng học các phụ thuộc xa. Chúng được giới thiệu bởi Hochreiter & Schmidhuber (1997), và được nhiều người tinh
 chỉnh và phổ biến. Chúng hoạt động rất tốt trong nhiều vấn đề lớn, và hiện đang được sử dụng rộng rãi.
@@ -115,7 +114,6 @@ thần kinh để học. Các dòng hợp nhất biểu thị việc ghép nối
 sao chép và các bản sao đi đến các vị trí khác nhau.
 
 \textbf{Ý tưởng chính của LSTM} \\[0.2em]
-
 Ý tưởng chính của LSTM là ô trạng thái, đường ngang chạy qua đỉnh sơ đồ.
 
 Dòng trạng thái giống như một băng chuyền. Nó chạy thẳng xuống toàn bộ chuỗi, chỉ với một số tương tác tuyến tính nhỏ
@@ -144,14 +142,13 @@ là có thể cho phép mọi thứ thông qua!
 Một LSTM có ba trong cổng này, để bảo vệ và kiểm soát trạng thái tế bào.
 
 \textbf{Các bước LSTM hoạt động} \\[0.2em]
-
 Bước đầu tiên trong LSTM  là quyết định thông tin nào đi ra khỏi ô trạng thái. Quyết định này được đưa ra bởi
 một lớp sigmoid được gọi là lớp "cổng quên". Nó dựa vào giá trị của \(h_{t-1}\) và \(x_t\), và đưa ra một số từ 0
 đến 1 tương ứng với mỗi số ô trạng thái \(c_{t-1}\). Số 1 có nghĩa là giữ lại toàn bộ thông tin trong khi đó số 0 nghĩa
 là hãy quên nó đi.
 
 Hãy xem ví dụ của chúng ta về một mô hình ngôn ngữ đang cố gắng dự đoán từ tiếp theo dựa trên tất cả các từ trước đó.
-Trong một vấn đề như vậy, ô trạng thái có thể bao gồm vai vế của ngữ hiện tại, để có thể sử dụng các đại từ nhân xưng
+Trong một vấn đề như vậy, ô trạng thái có thể bao gồm vai vế của ngữ hiện tại, để có thể sử dụng các động từ
 một cách chính xác. Khi có một chủ ngữ mới, nó sẽ quên đi vai vế của chủ ngữ cũ.
 
 \begin{figure}[!htb]
@@ -174,11 +171,12 @@ quên.
 Bây giờ, sẽ cập nhật ô trạng thái cũ, \(C_{t-1}\), sang ô trạng thái mới \(C_{t}\). Các bước trước đã quyết định phải
 quên và nhớ những gì, giờ là lúc thực hiện nó.
 
-Nhân ô trạng thái vũ với \(f_t\), quên đi những điều quyết định quên trước đó. Sau đó, cộng với \
+Nhân ô trạng thái cũ với \(f_t\), quên đi những điều quyết định quên trước đó. Sau đó, cộng với \
 i_t*\widetilde{C}_t\).
 Đây là giá trị ứng viên mới, được tính theo mức độ cập nhật từng giá trị trạng thái.
 
-Trong trường hợp của mô hình ngôn ngữ, đây là lúc thực sự bỏ thông tin về vai về và thêm thông tin mới, như đã quyết định trong các bước trước.
+Trong trường hợp của mô hình ngôn ngữ, đây là lúc thực sự bỏ thông tin về vai vế và thêm thông tin mới, như đã quyết
+định trong các bước trước.
 \begin{figure}[!htb]
     \center{\includegraphics[width=\figureBigSize]
     {figure/model/LSTM3-focus-C.png}}
@@ -191,3 +189,27 @@ các dữ liệu đã quyết định
 Đối với ví dụ về mô hình ngôn ngữ, vì nó chỉ nhìn thấy một chủ ngữ, nó có thể muốn đưa ra thông tin có liên quan đến
 một động từ, trong trường hợp đó là những gì sắp diễn ra. Ví dụ, nó có thể xuất ra vai vế của chủ ngữ , để biết được
 cách dùng từ với chủ ngữ đó.
+
+\textbf{Mạng GRU} \\[0.2em]
+Ý tưởng của GRU cũng khá giống với LSTM:
+
+\[ z &= \sigma(x_t U^z + s_{t-1} W^z) \cr \]
+\[r &= \sigma(x_t U^r + s_{t-1} W^r) \cr \]
+\[h &= \tanh(x_t U^h + (s_{t-1} \circ r) W^h) \cr \]
+\[s_t &= {(1 - z) \circ h} + {z \circ s_{t-1}} \]
+​
+GRU chỉ có 2 cổng: cổng thiết lập lại \(r\) và cổng cập nhập \(z\). Cổng thiết lập lại sẽ quyết định cách kết hợp giữa
+đầu vào hiện tại với bộ nhớ trước, còn cổng cập nhập sẽ chỉ định có bao nhiêu thông tin về bộ nhớ trước nên giữa lại.
+Như vậy RNN thuần cũng là một dạng đặc biệt của GRU, với đầu ra của cổng thiết lập lại là 1 và cổng cập nhập là 0.
+Cùng chung ý tưởng sử dụng cơ chế cổng điều chỉnh thông tin, nhưng chúng khác nhau ở mấy điểm sau:
+\begin{itemize}
+    \item GRU có 2 cổng, còn LSTM có tới 3 cổng.
+    \item GRU không có bộ nhớ trong \(c_t\) và không có cổng ra như LSTM.
+    \item 2 cổng vào và cổng quên được kết hợp lại thành cổng cập nhập \(z\) và cổng thiết lập lại \(r\) sẽ được áp dụng trực tiếp cho trạng thái ẩn trước.
+    \item GRU không sử dụng một hàm phi tuyến tính để tính đầu ra như LSTM.
+\end{itemize}
+\begin{figure}[!htb]
+    \center{\includegraphics[width=\figureBigSize]
+    {figure/model/GRU.png}}
+    \caption{\label{fig:GRU} Các cổng GRU.}
+\end{figure}
