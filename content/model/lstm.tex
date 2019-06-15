@@ -77,15 +77,11 @@ người đã tìm thấy một số lý do khá cơ bản tại sao nó có th�
 Rất may, LSTMs không có vấn đề này!
 
 \textbf{Mạng LSTM} \\[0.2em]
-Long Short Term Memory (mạng bộ nhớ dài ngắn hạn) - thường được gọi là LSTM của - - là một loại RNN đặc biệt, có khả
-năng học các phụ thuộc xa. Chúng được giới thiệu bởi Hochreiter & Schmidhuber (1997), và được nhiều người tinh
-chỉnh và phổ biến. Chúng hoạt động rất tốt trong nhiều vấn đề lớn, và hiện đang được sử dụng rộng rãi.
+Long Short Term Memory (mạng bộ nhớ dài ngắn hạn) - thường được gọi là LSTM của - - là một loại RNN đặc biệt, có khả năng học các phụ thuộc xa. Chúng được giới thiệu bởi Hochreiter \& Schmidhuber (1997), và được nhiều người tinh chỉnh và phổ biến. Chúng hoạt động rất tốt trong nhiều vấn đề lớn, và hiện đang được sử dụng rộng rãi.
 
-Các LSTM được thiết kế rõ ràng để tránh vấn đề phụ thuộc dài hạn. Ghi nhớ thông tin trong thời gian dài thực tế là
-hành vi mặc định của nó, không phải là thứ khó khăn để học!
+Các LSTM được thiết kế rõ ràng để tránh vấn đề phụ thuộc dài hạn. Ghi nhớ thông tin trong thời gian dài thực tế là hành vi mặc định của nó, không phải là thứ khó khăn để học!
 
-Tất cả các mạng thần kinh tái phát có dạng một chuỗi các module lặp lại của mạng thần kinh. Trong các RNN tiêu chuẩn,
-module lặp lại này sẽ có cấu trúc rất đơn giản, chẳng hạn như một lớp \(tanh\) duy nhất.
+Tất cả các mạng thần kinh tái phát có dạng một chuỗi các module lặp lại của mạng thần kinh. Trong các RNN tiêu chuẩn, module lặp lại này sẽ có cấu trúc rất đơn giản, chẳng hạn như một lớp \(tanh\) duy nhất.
 
 \begin{figure}[!htb]
     \center{\includegraphics[width=\figureBigSize]
@@ -171,8 +167,7 @@ quên.
 Bây giờ, sẽ cập nhật ô trạng thái cũ, \(C_{t-1}\), sang ô trạng thái mới \(C_{t}\). Các bước trước đã quyết định phải
 quên và nhớ những gì, giờ là lúc thực hiện nó.
 
-Nhân ô trạng thái cũ với \(f_t\), quên đi những điều quyết định quên trước đó. Sau đó, cộng với \
-i_t*\widetilde{C}_t\).
+Nhân ô trạng thái cũ với \(f_t\), quên đi những điều quyết định quên trước đó. Sau đó, cộng với \(i_t*\widetilde{C}_t\).
 Đây là giá trị ứng viên mới, được tính theo mức độ cập nhật từng giá trị trạng thái.
 
 Trong trường hợp của mô hình ngôn ngữ, đây là lúc thực sự bỏ thông tin về vai vế và thêm thông tin mới, như đã quyết
@@ -193,10 +188,10 @@ cách dùng từ với chủ ngữ đó.
 \textbf{Mạng GRU} \\[0.2em]
 Ý tưởng của GRU cũng khá giống với LSTM:
 
-\[ z &= \sigma(x_t U^z + s_{t-1} W^z) \cr \]
-\[r &= \sigma(x_t U^r + s_{t-1} W^r) \cr \]
-\[h &= \tanh(x_t U^h + (s_{t-1} \circ r) W^h) \cr \]
-\[s_t &= {(1 - z) \circ h} + {z \circ s_{t-1}} \]
+\[ z = \sigma(x_t U^z + s_{t-1} W^z)  \]
+\[r = \sigma(x_t U^r + s_{t-1} W^r)  \]
+\[h = \tanh(x_t U^h + (s_{t-1} \circ r) W^h) \]
+\[s_t = {(1 - z) \circ h} + {z \circ s_{t-1}} \]
 ​
 GRU chỉ có 2 cổng: cổng thiết lập lại \(r\) và cổng cập nhập \(z\). Cổng thiết lập lại sẽ quyết định cách kết hợp giữa
 đầu vào hiện tại với bộ nhớ trước, còn cổng cập nhập sẽ chỉ định có bao nhiêu thông tin về bộ nhớ trước nên giữa lại.

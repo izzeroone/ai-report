@@ -24,7 +24,7 @@ draft=false,                % value for draft version
 % **************************************************
 % Information and Commands for Reuse
 % **************************************************
-\newcommand{\thesisTitle}{Xây dựng chatbox sử dụng Machine Learning}
+\newcommand{\thesisTitle}{Xây dựng chatbot sử dụng Machine Learning}
 \newcommand{\thesisName}{Phạm Hùng Vỹ - 15521037 \\ Lê Nhựt Vinh - 15521016}
 \newcommand{\thesisSubject}{Báo cáo}
 \newcommand{\thesisDate}{13/06/2019}
@@ -62,7 +62,7 @@ hangsection=true,%
 hangsubsection=true,%
 colorize=full,%
 colortheme=bluemagenta,%
-bibsys=bibtex,%
+bibsys=biber,%
 bibfile=bib-refs,%
 bibstyle=alphabetic,%
 ]{cleanthesis}
@@ -96,8 +96,10 @@ bookmarksopen=true            %
     % --------------------------
     %\renewcaptionname{ngerman}{\figurename}{Abb.}
     %\renewcaptionname{ngerman}{\tablename}{Tab.}
-    \renewcaptionname{english}{\figurename}{Fig.}
-    \renewcaptionname{english}{\tablename}{Tab.}
+    \renewcaptionname{english}{\figurename}{Hình.}
+    \renewcaptionname{english}{\tablename}{Bảng.}
+    \renewcommand{\listfigurename}{Danh sách các hình}
+    \renewcommand{\contentsname}{Mục lục}
 
     % --------------------------
     % Front matter
@@ -127,27 +129,23 @@ bookmarksopen=true            %
     \input{content/chapter-data} % INCLUDE: data work
     \input{content/chapter-model} % INCLUDE: concepts
     \input{content/chapter-conclusion} % INCLUDE: conclusion
-    \cleardoublepage
 
     % --------------------------
     % Back matter
     % --------------------------
     {%
-    \setstretch{1.1}
-    \renewcommand{\bibfont}{\normalfont\small}
-    \setlength{\biblabelsep}{0pt}
-    \setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
-    \printbibliography[nottype=online]
-    \printbibliography[heading=subbibliography,title={Webseiten},type=online,prefixnumbers={@}]
+    	\setstretch{1.1}
+    	\renewcommand{\bibfont}{\normalfont\small}
+    	\setlength{\biblabelsep}{0pt}
+    	\setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+        \nocite{*}
+    	\printbibliography[title={Tài liệu tham khảo}]
+%    	\printbibliography[heading=subbibliography,title={Website},type=online,prefixnumbers={@}]
     }
     \cleardoublepage
 
     \listoffigures
     \cleardoublepage
-
-    \listoftables
-    \cleardoublepage
-
 
     \newpage
     \mbox{}

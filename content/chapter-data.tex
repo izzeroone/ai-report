@@ -16,19 +16,19 @@ Bộ dữ liệu này rất lớn và đa dạng, và có sự khác biệt lớ
 \textbf{File: movie\detokenize{_}lines.txt} \\
 File này thông tin các câu hội thoại của từng nhân vật. Một số dòng dữ liệu mẫu
 \begin{displayquote}
-b'L1045 \detokenize{+++$+++} u0 \detokenize{+++$+++} m0 \detokenize{+++$+++} BIANCA \detokenize{+++$+++} They do not!\n' \\
-b'L1044 \detokenize{+++$+++}  u2 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  CAMERON \detokenize{+++$+++}  They do to!\n' \\
-b'L985 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  I hope so.\n' \\
-b'L984 \detokenize{+++$+++}  u2 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  CAMERON \detokenize{+++$+++}  She okay?\n' \\
-b"L925 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  Let's go.\n" \\
-b'L924 \detokenize{+++$+++}  u2 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  CAMERON \detokenize{+++$+++}  Wow\n' \\
-b"L872 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  Okay -- you're gonna need to learn how to lie.\n" \\
-b'L871 \detokenize{+++$+++}  u2 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  CAMERON \detokenize{+++$+++}  No\n' \\
-b'L870 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  I\'m kidding.  You know how sometimes you just become this
-"persona"?  And you don\'t know how to quit?\n' \\
-b'L869 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  Like my fear of wearing pastels?\n' \\
+b'L1045 \detokenize{+++\$+++} u0 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} BIANCA \detokenize{+++\$+++} They do not!\textbackslash{}n' \\
+b'L1044 \detokenize{+++\$+++}  u2 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  CAMERON \detokenize{+++\$+++}  They do to!\textbackslash{}n' \\
+b'L985 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  I hope so.\textbackslash{}n' \\
+b'L984 \detokenize{+++\$+++}  u2 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  CAMERON \detokenize{+++\$+++}  She okay?\textbackslash{}n' \\
+b"L925 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  Let's go.\textbackslash{}n" \\
+b'L924 \detokenize{+++\$+++}  u2 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  CAMERON \detokenize{+++\$+++}  Wow\textbackslash{}n' \\
+b"L872 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  Okay -- you're gonna need to learn how to lie.\textbackslash{}n" \\
+b'L871 \detokenize{+++\$+++}  u2 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  CAMERON \detokenize{+++\$+++}  No\textbackslash{}n' \\
+b'L870 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  I\'m kidding.  You know how sometimes you just become this
+"persona"?  And you don\'t know how to quit?\textbackslash{}n' \\
+b'L869 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  Like my fear of wearing pastels?\textbackslash{}n' \\
 \end{displayquote}
-Các trường dữ liệu được phân cách bởi ký hiệu "\detokenize{+++$+++} ".
+Các trường dữ liệu được phân cách bởi ký hiệu "\detokenize{+++\$+++} ".
 Các trường lần lượt là:
 \begin{itemize}
     \item Mã dòng
@@ -40,29 +40,29 @@ Các trường lần lượt là:
 
 Ví dụ
 \begin{displayquote}
-L1045 \detokenize{+++$+++} u0 \detokenize{+++$+++} m0 \detokenize{+++$+++} BIANCA \detokenize{+++$+++} They do not!\n' \\
+L1045 \detokenize{+++\$+++} u0 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} BIANCA \detokenize{+++\$+++} They do not!\textbackslash{}n' \\
 \end{displayquote}
 Có nghĩa tại phim có mã 'm0' nhân vật 'u0' có tên là 'BIANCA' nói lời thoại "They do not!"
 
 \textbf{File: movie\detokenize{_}conversations.txt} \\
 File này thông tin các câu nào tạo thành một đoạn hội thoại. Một số dòng dữ liệu mẫu
 \begin{displayquote}
-    u0 \detokenize{+++$+++} u2 \detokenize{+++$+++} m0 \detokenize{+++$+++} ['L870', 'L871', 'L872'] \\
-    u0 \detokenize{+++$+++} u2 \detokenize{+++$+++} m0 \detokenize{+++$+++} ['L924', 'L925'] \\
-    u0 \detokenize{+++$+++} u2 \detokenize{+++$+++} m0 \detokenize{+++$+++} ['L984', 'L985'] \\
+    u0 \detokenize{+++\$+++} u2 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} ['L870', 'L871', 'L872'] \\
+    u0 \detokenize{+++\$+++} u2 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} ['L924', 'L925'] \\
+    u0 \detokenize{+++\$+++} u2 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} ['L984', 'L985'] \\
 \end{displayquote}
-Các trường dữ liệu được phân cách bởi ký hiệu "\detokenize{+++$+++} ".
+Các trường dữ liệu được phân cách bởi ký hiệu "\detokenize{+++\$+++} ".
 Các trường lần lượt là:
 \begin{itemize}
     \item Mã nhân vật đầu tiên của cuộc hội thoại.
     \item Mã nhân vật thứ hai của cuộc hội thoại.
     \item Mã phim mà cuộc hội thoại diễn ra
-    \item Mã lời thoại trong file \textit{movie\detokenize{_}lines.txt}} theo thứ tự để tạo thành cuộc hội thoại
+    \item Mã lời thoại trong file \textit{movie\_lines.txt} theo thứ tự để tạo thành cuộc hội thoại
 \end{itemize}
 
 Ví dụ
 \begin{displayquote}
-    u0 \detokenize{+++$+++} u2 \detokenize{+++$+++} m0 \detokenize{+++$+++} ['L870', 'L871', 'L872']
+    u0 \detokenize{+++\$+++} u2 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} ['L870', 'L871', 'L872']
 \end{displayquote}
 Có nghĩa tại phim có mã 'm0' nhân vật 'u0' và 'u2' nói chuyện với nhau bằng các lời thoại ['L870', 'L871', 'L872']
 
@@ -74,14 +74,14 @@ các câu trong đoạn hội thoại
 Ví dụ:
 \textit{File: movie\detokenize{_}line.txt}
 \begin{displayquote}
-b"L872 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  Okay -- you're gonna need to learn how to lie.\n" \\
-b'L871 \detokenize{+++$+++}  u2 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  CAMERON \detokenize{+++$+++}  No\n' \\
-b'L870 \detokenize{+++$+++}  u0 \detokenize{+++$+++}  m0 \detokenize{+++$+++}  BIANCA \detokenize{+++$+++}  I\'m kidding.  You know how sometimes you just become this
-"persona"?  And you don\'t know how to quit?\n' \\
+b"L872 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  Okay -- you're gonna need to learn how to lie.\textbackslash{}n" \\
+b'L871 \detokenize{+++\$+++}  u2 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  CAMERON \detokenize{+++\$+++}  No\textbackslash{}n' \\
+b'L870 \detokenize{+++\$+++}  u0 \detokenize{+++\$+++}  m0 \detokenize{+++\$+++}  BIANCA \detokenize{+++\$+++}  I\'m kidding.  You know how sometimes you just become this
+"persona"?  And you don\'t know how to quit?\textbackslash{}n' \\
 \end{displayquote}
-\textit{File: movie\detokenize{_}conversations.txt}
+\textit{File: movie\_conversations.txt}
 \begin{displayquote}
-    u0 \detokenize{+++$+++} u2 \detokenize{+++$+++} m0 \detokenize{+++$+++} ['L870', 'L871', 'L872']
+    u0 \detokenize{+++\$+++} u2 \detokenize{+++\$+++} m0 \detokenize{+++\$+++} ['L870', 'L871', 'L872']
 \end{displayquote}
 
 Sẽ tạo thành đoạn hội thoại sau:
