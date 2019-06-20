@@ -186,6 +186,12 @@ INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/h
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/nameref.sty
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
 OUTPUT /Users/wozzz/vs-projects/ai-report/ai-report.out
 OUTPUT /Users/wozzz/vs-projects/ai-report/ai-report.pdf
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/oberdiek/bookmark.sty
@@ -220,12 +226,6 @@ INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/p
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/psnfss/t1phv.fd
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/helvetic/phvr8t.tfm
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/huerta/alegreya/AlegreyaSans-Bold-lf-t1.tfm
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.toc
+INPUT /Users/wozzz/vs-projects/ai-report/ai-report.toc
 OUTPUT /Users/wozzz/vs-projects/ai-report/ai-report.toc
-INPUT /Users/wozzz/vs-projects/ai-report/content/chapter-introduction.tex
-INPUT /Users/wozzz/vs-projects/ai-report/content/chapter-introduction.tex
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tex-gyre/t1qhv.fd
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tex-gyre/t1qhv.fd
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/tex-gyre/ec-qhvr.tfm
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/tex-gyre/ec-qhvb.tfm
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/adobe/helvetic/phvr8t.vf
-INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/helvetic/phvr8r.tfm

@@ -19,13 +19,12 @@ Bảng này gồm 7 cột:
 Dự liệu được lấy từ thị trướng chứng khoán, chính vì vậy, có những ngày nghỉ như ngày lễ, ngày thứ 7, chủ nhật sẽ không có dữ liệu.
 Ngoài ra dữ liệu không theo quy luật năm, có tính mùa, có quy luật trong tuần. Trong các năm, hầu như giá vào mùa xuân sẽ cao hơn cái ngày còn lại
 
-
 \section{Mạng học sâu}
 Tiền xử lý dữ liệu
 \begin{itemize}
     \item Đối với những ngày không có dữ liệu thì điền dữ liệu bằng ngày trước để có tính liên tục \\
     \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn) \\
-    \item Chuẩn hoá dữ liệu cột y bằng MinMaxScalar với khoảng (0, 1) (tức là chia cho số lớn nhất) \\
+    \item Chuẩn hoá dữ liệu cột y bằng MinMaxScalar với khoảng (0, 1) \\
     \item Giữ 90 ngày cuối để xác minh. Những ngaỳ còn lại để đem train \\
     \item Dữ liệu đầu vào: sẽ ra giá của ngày hiện tại + 89 ngày trước \\
     Dữ liệu đầu ra là giá vàng 90 ngày sau ngày hôm nay. Vậy sẽ bỏ qua 89 ngày đầu của bộ dữ liệu (thiếu dữ liệu ngày trước đó) \\
@@ -38,7 +37,7 @@ Tiền xử lý dữ liệu
     Mạng lúc sau là : LSTM -> Dense \\
     Đầu vào có dạng (batch\_size, 90, 1) \\
     Đầu ra có dạng (90) (dự đoán 90 ngày cùng lúc) \\
-    Mạng được train với loss function là MAE \(MAE = |f_i - p_i|\), optimizer là Adam \\
+    Mạng được train với loss function là MAE \(MAE = \frac{1}{n}\sum_{i=1}^{n}|f_i - p_i|\), optimizer là Adam \\
 \textbf{Kết quả}
     Sử dụng MAE đánh giá, chỉ số có giá trị càng nhỏ thì càng chính xác. Sau ta khi inverse transform ta đc \\
     Mạng ban đầu 5 lớp là 6. \\
