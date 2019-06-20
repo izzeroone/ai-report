@@ -4,7 +4,7 @@
 \label{sec:data}
 
 \section{Dữ liệu}
-Được lấy từ package python fix_yahoo_finance. Gói này lấy thông tin từ trang Yahoo Finance và chuyển thành Panda Dataframe.
+Được lấy từ package python fix\_yahoo\_finance. Gói này lấy thông tin từ trang Yahoo Finance và chuyển thành Panda Dataframe.
 Bảng này gồm 7 cột:
 \begin{itemize}
     \item Date: ngày
@@ -23,34 +23,35 @@ Ngoài ra dữ liệu không theo quy luật năm, có tính mùa, có quy luậ
 \section{Mạng học sâu}
 Tiền xử lý dữ liệu
 \begin{itemize}
-    \item Đối với những ngày không có dữ liệu thì điền dữ liệu bằng ngày trước để có tính liên tục
-    \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn)
-    \item Chuẩn hoá dữ liệu cột y bằng MinMaxScalar với khoảng (0, 1) (tức là chia cho số lớn nhất)
-    \item Giữ 90 ngày cuối để xác minh. Những ngaỳ còn lại để đem train
+    \item Đối với những ngày không có dữ liệu thì điền dữ liệu bằng ngày trước để có tính liên tục \\
+    \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn) \\
+    \item Chuẩn hoá dữ liệu cột y bằng MinMaxScalar với khoảng (0, 1) (tức là chia cho số lớn nhất) \\
+    \item Giữ 90 ngày cuối để xác minh. Những ngaỳ còn lại để đem train \\
     \item Dữ liệu đầu vào: sẽ ra giá của ngày hiện tại + 89 ngày trước \\
-    Dữ liệu đầu ra là giá vàng 90 ngày sau ngày hôm nay. Vậy sẽ bỏ qua 89 ngày đầu của bộ dữ liệu (thiếu dữ liệu ngày trước đó)
+    Dữ liệu đầu ra là giá vàng 90 ngày sau ngày hôm nay. Vậy sẽ bỏ qua 89 ngày đầu của bộ dữ liệu (thiếu dữ liệu ngày trước đó) \\
 \end{itemize}
 \textbf{Model}
-    LSTM là Recurrency network có khả năng quyết định quên, ghi nhớ và xuất trạng thái
-    Mạng ban đầu gồm 5 lớp: LSTM -> Dropout -> LSTM -> Dropout -> Dense
-    Mạng lúc sau là : LSTM -> Dense
-    Đầu vào có dạng (batch_size, 90, 1)
-    Đầu ra có dạng (90) (dự đoán 90 ngày cùng lúc)
-    Mạng được train với loss function là MAE \(MAE = |f_i - p_i|\), optimizer là Adam
-\textbf{Kết quả}
-    Sử dụng MAE đánh giá, chỉ số có giá trị càng nhỏ thì càng chính xác. Sau ta khi inverse transform ta đc
-    Mạng ban đầu 5 lớp là 6.
-    Mạng sau là 4.2
-\item
+    LSTM là Recurrency network có khả năng quyết định quên, ghi nhớ và xuất trạng thái \\
+    Mạng ban đầu gồm 5 lớp: LSTM -> Dropout -> LSTM -> Dropout -> Dense \\
 
-\section{Prophet
+
+    Mạng lúc sau là : LSTM -> Dense \\
+    Đầu vào có dạng (batch\_size, 90, 1) \\
+    Đầu ra có dạng (90) (dự đoán 90 ngày cùng lúc) \\
+    Mạng được train với loss function là MAE \(MAE = |f_i - p_i|\), optimizer là Adam \\
+\textbf{Kết quả}
+    Sử dụng MAE đánh giá, chỉ số có giá trị càng nhỏ thì càng chính xác. Sau ta khi inverse transform ta đc \\
+    Mạng ban đầu 5 lớp là 6. \\
+    Mạng sau là 4.2 \\
+
+\section{Prophet}
 Tiền xử lý dữ liệu
 \begin{itemize}
-    \item Đối với những ngày không có dữ liệu thì điền dữ liệu bằng ngày trước để có tính liên tục
-    \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn)
-    \item Tới đây thôi nha prophet không yêu cầu tiền xử lý gì hết
+    \item Đối với những ngày không có dữ liệu thì điền dữ liệu bằng ngày trước để có tính liên tục \\
+    \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn) \\
+    \item Tới đây thôi nha prophet không yêu cầu tiền xử lý gì hết \\
 \end{itemize}
 \textbf{Model}
-Prophet với tham số mặc định, không sử dụng seasonal, weekly, holiday
+Prophet với tham số mặc định, không sử dụng seasonal, weekly, holiday \\
 \textbf{Kết quả}
 Sử dụng MAE đánh giá. MAE = 0.99 (WTF ??)

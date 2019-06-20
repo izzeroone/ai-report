@@ -107,16 +107,15 @@ bookmarksopen=true            %
     \pagenumbering{roman}            % roman page numbing (invisible for empty page style)
     \pagestyle{empty}                % no header or footers
     \input{content/titlepages}        % INCLUDE: all titlepages
-    \cleardoublepage
+    
 
     \pagestyle{plain}                % display just page numbers
     %
     \input{content/thank} % INCLUDE: acknowledgement
-    \cleardoublepage
     %
     \setcounter{tocdepth}{2}        % define depth of toc
     \tableofcontents                % display table of contents
-    \cleardoublepage
+    
 
     % --------------------------
     % Body matter
@@ -140,10 +139,10 @@ bookmarksopen=true            %
     	\printbibliography[title={Tài liệu tham khảo}]
 %    	\printbibliography[heading=subbibliography,title={Website},type=online,prefixnumbers={@}]
     }
-    \cleardoublepage
+    
 
     \listoffigures
-    \cleardoublepage
+    
 
     \newpage
     \mbox{}
