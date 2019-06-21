@@ -1,0 +1,7 @@
+complex_model = Sequential()
+complex_model.add(LSTM(units=100, input_shape=(X_train_vals.shape[1], X_train_vals.shape[2]), return_sequences=True))
+complex_model.add(Dropout(rate=0.2))
+complex_model.add(LSTM(100, return_sequences=False))
+complex_model.add(Dropout(rate=0.2))
+complex_model.add(Dense(prediction_size, activation='linear'))
+complex_model.compile(loss='mae', optimizer='adam')

@@ -1,0 +1,154 @@
+% **************************************************
+% Document Class Definition
+% **************************************************
+\documentclass[%
+paper=A4,                    % paper size --> A4 is default in Germany
+twoside=false,                % onesite or twoside printing
+openright,                    % doublepage cleaning ends up right side
+parskip=full,                % spacing value / method for paragraphs
+chapterprefix=true,            % prefix for chapter marks
+11pt,                        % font size
+headings=normal,            % size of headings
+bibliography=totoc,            % include bib in toc
+listof=totoc,                % include listof entries in toc
+titlepage=on,                % own page for each title page
+captions=tableabove,        % display table captions above the float env
+draft=false,                % value for draft version
+]{scrreprt}%
+
+% **************************************************
+% Debug LaTeX Information
+% **************************************************
+%\listfiles
+
+% **************************************************
+% Information and Commands for Reuse
+% **************************************************
+\newcommand{\thesisTitle}{Dự đoán giá vàng}
+\newcommand{\thesisName}{Phạm Hùng Vỹ - 15521037 \\ Trần Phú Vinh- 15521020 \\ Đào Đức Huy - 15520295 \\ Phan Hữu Chí - 15520065}
+\newcommand{\thesisSubject}{Báo cáo}
+\newcommand{\thesisDate}{20/06/2019}
+\newcommand{\thesisVersion}{1.0}
+
+\newcommand{\teacher}{Nguyễn Công Hoan}
+\newcommand{\thesisFirstReviewer}{Jane Doe}
+\newcommand{\thesisFirstReviewerUniversity}{\protect{Clean Thesis Style University}}
+\newcommand{\thesisFirstReviewerDepartment}{Department of Clean Thesis Style}
+
+\newcommand{\thesisSecondReviewer}{John Doe}
+\newcommand{\thesisSecondReviewerUniversity}{\protect{Clean Thesis Style University}}
+\newcommand{\thesisSecondReviewerDepartment}{Department of Clean Thesis Style}
+
+\newcommand{\thesisFirstSupervisor}{Jane Doe}
+\newcommand{\thesisSecondSupervisor}{John Smith}
+
+\newcommand{\thesisMainUniversity}{\protect{Đại học quốc gia Thành phố Hồ Chí Minh}}
+\newcommand{\thesisUniversity}{\protect{Trường Đại học Công nghệ thông tin}}
+\newcommand{\thesisUniversityDepartment}{Khoa công nghệ phần mềm}
+\newcommand{\thesisUniversityInstitute}{Institut for Clean Thesis Dev}
+
+\newcommand{\figureBigSize}{10cm}
+\newcommand{\figureMediumSize}{10cm}
+% **************************************************
+% Load and Configure Packages
+% **************************************************
+\usepackage[utf8]{inputenc}        % defines file's character encoding
+\usepackage[english]{babel} % babel system, adjust the language of the content
+\usepackage{tabularx}
+\usepackage{minted}
+\usepackage{float}
+\usepackage[                    % clean thesis style
+figuresep=colon,%
+sansserif=false,%
+hangfigurecaption=false,%
+hangsection=true,%
+hangsubsection=true,%
+colorize=full,%
+colortheme=bluemagenta,%
+bibsys=biber,%
+bibfile=bib-refs,%
+bibstyle=alphabetic,%
+]{cleanthesis}
+
+\hypersetup{                    % setup the hyperref-package options
+pdftitle={\thesisTitle},    % 	- title (PDF meta)
+pdfsubject={\thesisSubject},% 	- subject (PDF meta)
+pdfauthor={\thesisName},    % 	- author (PDF meta)
+plainpages=false,            % 	-
+colorlinks=false,            % 	- colorize links?
+pdfborder={0 0 0},            % 	-
+breaklinks=true,            % 	- allow line break inside links
+bookmarksnumbered=true,        %
+bookmarksopen=true            %
+}
+
+% Overwrite clean thesis formating
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault]{AlegreyaSans} %% Option 'black' gives heavier bold face
+%% The 'sfdefault' option to make the base font sans serif
+\renewcommand*\oldstylenums[1]{{\AlegreyaSansOsF #1}}
+\usepackage[justification=centering]{caption}
+
+% **************************************************
+% Document CONTENT
+% **************************************************
+\begin{document}
+
+    % --------------------------
+    % rename document parts
+    % --------------------------
+    \renewcaptionname{english}{\figurename}{Hình.}
+    \renewcaptionname{english}{\tablename}{Bảng.}
+    \renewcommand{\listfigurename}{Danh sách các hình}
+    \renewcommand{\contentsname}{Mục lục}
+
+    % --------------------------
+    % Front matter
+    % --------------------------
+    \pagenumbering{roman}            % roman page numbing (invisible for empty page style)
+    \pagestyle{empty}                % no header or footers
+    \input{content/titlepages}        % INCLUDE: all titlepages
+    
+
+    \pagestyle{plain}                % display just page numbers
+    %
+    \input{content/thank} % INCLUDE: acknowledgement
+    \cleardoublepage
+    %
+    \setcounter{tocdepth}{3}        % define depth of toc
+    \tableofcontents                % display table of contents
+    \cleardoublepage
+
+
+    % --------------------------
+    % Body matter
+    % --------------------------
+    \pagenumbering{arabic}            % arabic page numbering
+    \setcounter{page}{1}            % set page counter
+    \pagestyle{maincontentstyle}    % fancy header and footer
+
+    \input{content/chapter-theory} % INCLUDE: introduction
+    \input{content/chapter-machinelearning} % INCLUDE: data work
+    \input{content/chapter-contribute}
+
+    % --------------------------
+    % Back matter
+    % --------------------------
+    {%
+    	\setstretch{1.1}
+    	\renewcommand{\bibfont}{\normalfont\small}
+    	\setlength{\biblabelsep}{0pt}
+    	\setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+        \nocite{*}
+        \printbibliography[title={Tài liệu tham khảo}]
+        \cleardoublepage
+%    	\printbibliography[heading=subbibliography,title={Website},type=online,prefixnumbers={@}]
+    }
+
+    \newpage
+    \mbox{}
+
+    % **************************************************
+    % End of Document CONTENT
+    % **************************************************
+\end{document}
