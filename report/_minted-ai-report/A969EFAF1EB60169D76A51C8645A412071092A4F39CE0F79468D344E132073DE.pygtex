@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{basic\PYGZus{}model} \PYG{o}{=} \PYG{n}{Sequential}\PYG{p}{()}
+\PYG{n}{basic\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{LSTM}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{,} \PYG{n}{input\PYGZus{}shape}\PYG{o}{=}\PYG{p}{(}\PYG{n}{X\PYGZus{}train\PYGZus{}vals}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}
+\PYG{n}{X\PYGZus{}train\PYGZus{}vals}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])))}
+\PYG{n}{basic\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Dense}\PYG{p}{(}\PYG{n}{prediction\PYGZus{}size}\PYG{p}{))}
+\PYG{n}{basic\PYGZus{}model}\PYG{o}{.}\PYG{n}{compile}\PYG{p}{(}\PYG{n}{loss}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}mae\PYGZsq{}}\PYG{p}{,} \PYG{n}{optimizer}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}adam\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

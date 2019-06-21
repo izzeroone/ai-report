@@ -37,7 +37,7 @@ Trong vài năm qua, đã có những thành công đáng kinh ngạc khi áp d�
 nói, mô hình ngôn ngữ, dịch thuật, chú thích hình ảnh.
 
 Điều cần thiết cho những thành công này là việc sử dụng "LSTM", một loại Recurrent neural network rất đặc biệt, hoạt
-động, cho nhiều tác vụ, tốt hơn nhiều so với phiên bản tiêu chuẩn. Hầu như tất cả các kết quả thú vị dựa trên các mạng thần kinh tái phát đều đạt được với chúng. Nó có những LSTM mà bài tiểu luận này sẽ khám phá.
+động, cho nhiều tác vụ, tốt hơn nhiều so với phiên bản tiêu chuẩn. Hầu như tất cả các kết quả thú vị dựa trên Recurrent neural network đều đạt được với chúng. Nó có những LSTM mà bài tiểu luận này sẽ khám phá.
 
 \textbf{Vấn đề phụ thuộc xa} \\[0.2em]
 Một trong những lời kêu gọi của RNN là ý tưởng rằng họ có thể kết nối thông tin trước đó với tác vụ hiện tại, chẳng
@@ -69,11 +69,11 @@ Thật không may, khi khoảng cách đó tăng lên, các RNN trở nên khôn
 
 
 Về lý thuyết, các RNN hoàn toàn có khả năng xử lý các phụ thuộc dài hạn như vậy. Một người có thể cẩn thận chọn các
-tham số cho họ để giải quyết các vấn đề về đồ chơi theo hình thức này. Đáng buồn thay, trong thực tế, RNNs don lồng
-dường như có thể học chúng. Vấn đề đã được khám phá sâu bởi Hochreiter (1991) [German] và Bengio, et al. (1994),
+tham số cho họ để giải quyết các vấn đề theo hình thức này. Đáng buồn thay, trong thực tế, RNN trông
+dường như không có thể học chúng. Vấn đề đã được khám phá sâu bởi Hochreiter (1991) [German] và Bengio, et al. (1994),
 người đã tìm thấy một số lý do khá cơ bản tại sao nó có thể khó khăn.
 
-Rất may, LSTMs không có vấn đề này!
+Rất may, LSTM không có vấn đề này!
 
 \textbf{Mạng LSTM} \\[0.2em]
 Long Short Term Memory (mạng bộ nhớ dài ngắn hạn) - thường được gọi là LSTM của - - là một loại RNN đặc biệt, có khả năng học các phụ thuộc xa. Chúng được giới thiệu bởi Hochreiter \& Schmidhuber (1997), và được nhiều người tinh chỉnh và phổ biến. Chúng hoạt động rất tốt trong nhiều vấn đề lớn, và hiện đang được sử dụng rộng rãi.
@@ -88,7 +88,7 @@ Tất cả các mạng thần kinh tái phát có dạng một chuỗi các modu
     \caption{\label{fig:lstm3-simpleRNN} Module lặp trong RNN chuẩn chứa một lớp duy nhất.}
 \end{figure}
 
-LSTMs cũng có cấu trúc chuỗi, nhưng các module lặp có một cấu trúc khác. Thay vì có một lớp
+LSTM cũng có cấu trúc chuỗi, nhưng các module lặp có một cấu trúc khác. Thay vì có một lớp
 mạng thần kinh duy nhất,nó có bốn lớp, tương tác theo một cách rất đặc biệt.
 
 \begin{figure}[H]

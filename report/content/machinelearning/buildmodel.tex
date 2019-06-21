@@ -1,5 +1,11 @@
 \subsection{Dữ liệu}
-Được lấy từ package python fix\_yahoo\_finance. Gói này lấy thông tin từ trang Yahoo Finance và chuyển thành Panda Dataframe.
+Được lấy từ package python fix\_yahoo\_finance. \\
+\begin{minted}{python}
+import fix_yahoo_finance as yf
+data = yf.download('GLD','2000-01-01')
+data.to_csv('data/gld.csv')
+\end{minted}
+Gói này lấy thông tin từ trang Yahoo Finance và chuyển thành Panda Dataframe.
 Bảng này gồm 7 cột:
 \begin{itemize}
     \item Date: ngày
@@ -7,14 +13,14 @@ Bảng này gồm 7 cột:
     \item Close: giá lúc đóng phiên danh nghĩa
     \item High: giá cao nhất trong ngày
     \item Low: giá thấp nhất trong ngày
-    \item Adj close: giá lúc đóng phiên thực tế đã tính phần lạm phát
+    \item Adj Close: giá lúc đóng phiên thực tế đã tính phần lạm phát
     \item Volume: số lượng bán ra
 \end{itemize}
 
 \begin{table}[h]
 	\begin{tabularx}{\textwidth}{X | X | X | X | X | X | X } 
 		%\hline
-		Date		& Open  & Date  & Close  & High  & Low & Adj close & Volume  		\\ \hline
+		Date		& Open  & Close  & High  & Low & Adj Close & Volume  		\\ \hline
 		2004-11-18	& 44.43	& 44.490002	& 44.07	 & 44.380001	& 44.380001	& 5992000		\\ %\hline
 	\end{tabularx}
 	\label{tab:sample-data}
@@ -27,8 +33,9 @@ Bảng này gồm 7 cột:
     \caption{\label{fig:gld-data} Biểu đồ dữ liệu}
 \end{figure}
 
-Dự liệu được lấy từ thị trướng chứng khoán, chính vì vậy, có những ngày nghỉ như ngày lễ, ngày thứ 7, chủ nhật sẽ không có dữ liệu.
-Có vẻ như dữ liệu không có xu hướng trong năm, mùa và không bị ảnh hưởng bởi ngày lễ. Số lượng bán ra không phụ thuộc vào giá bán.
+Dữ liệu được lấy từ ngày \textbf{18-11-2004} đến \textbf{06-03-2019}. 
+Dữ liệu được lấy từ thị trướng chứng khoán, chính vì vậy, có những ngày nghỉ như ngày lễ, ngày thứ 7, chủ nhật sẽ không có dữ liệu.
+Có vẻ như dữ liệu không có tính thời vụ trong năm, tính thời vụ trong mùa và không bị ảnh hưởng bởi ngày lễ. Số lượng bán ra không phụ thuộc vào giá.
 
 \subsection{Xử lý dữ liệu}
 
@@ -108,13 +115,13 @@ X_train_vals.shape[2])))
 basic_model.add(Dense(prediction_size))
 basic_model.compile(loss='mae', optimizer='adam')
 \end{minted}
-Đầu vào có dạng (batch\_size, 90, 1) \\
+Đầu vào có dạng (90, 1) \\
 Đầu ra có dạng (90) (dự đoán 90 ngày cùng lúc) \\
 Mạng được train với loss function là \(MAE = \frac{1}{n}\sum_{i=1}^{n}|p_i - a_i|\), optimizer là Adam \\
 \textbf{Prophet} \\
 Prophet với tham số mặc định, sử dụng daily seasonality, weekly seasonality, daily seasonality \\
 \begin{minted}{python}
-m = Prophet(daily_seasonality=True,
+m = Prophet(yearly_seasonality=True, 
 weekly_seasonality=True, daily_seasonality=True)
 \end{minted}
 \subsection{Công thức để đánh giá}

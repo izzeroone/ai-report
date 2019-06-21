@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{complex\PYGZus{}model} \PYG{o}{=} \PYG{n}{Sequential}\PYG{p}{()}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{LSTM}\PYG{p}{(}\PYG{n}{units}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{,} \PYG{n}{input\PYGZus{}shape}\PYG{o}{=}\PYG{p}{(}\PYG{n}{X\PYGZus{}train\PYGZus{}vals}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],}
+\PYG{n}{X\PYGZus{}train\PYGZus{}vals}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]),} \PYG{n}{return\PYGZus{}sequences}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{))}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Dropout}\PYG{p}{(}\PYG{n}{rate}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{))}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{LSTM}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{,} \PYG{n}{return\PYGZus{}sequences}\PYG{o}{=}\PYG{n+nb+bp}{False}\PYG{p}{))}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Dropout}\PYG{p}{(}\PYG{n}{rate}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{))}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Dense}\PYG{p}{(}\PYG{n}{prediction\PYGZus{}size}\PYG{p}{,} \PYG{n}{activation}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}linear\PYGZsq{}}\PYG{p}{))}
+\PYG{n}{complex\PYGZus{}model}\PYG{o}{.}\PYG{n}{compile}\PYG{p}{(}\PYG{n}{loss}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}mae\PYGZsq{}}\PYG{p}{,} \PYG{n}{optimizer}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}adam\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
