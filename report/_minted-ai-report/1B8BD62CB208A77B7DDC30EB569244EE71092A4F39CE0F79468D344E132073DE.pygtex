@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{m} \PYG{o}{=} \PYG{n}{Prophet}\PYG{p}{(}\PYG{n}{yearly\PYGZus{}seasonality}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,}
+\PYG{n}{weekly\PYGZus{}seasonality}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{n}{daily\PYGZus{}seasonality}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+\end{Verbatim}

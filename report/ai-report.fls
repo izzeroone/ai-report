@@ -231,12 +231,6 @@ INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/h
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/nameref.sty
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
 OUTPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.out
 OUTPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.pdf
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/oberdiek/bookmark.sty
@@ -244,9 +238,6 @@ INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/o
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/oberdiek/bkm-pdftex.def
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/tex/latex/oberdiek/bkm-pdftex.def
 OUTPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.bcf
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.bbl
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.bbl
-INPUT /Users/wozzz/vs-projects/ai-report/report/ai-report.bbl
 INPUT /Users/wozzz/vs-projects/ai-report/report/content/titlepages.tex
 INPUT /Users/wozzz/vs-projects/ai-report/report/content/titlepages.tex
 INPUT /Users/wozzz/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/huerta/alegreya/AlegreyaSans-Regular-lf-t1.tfm

@@ -34,7 +34,7 @@ Bảng này gồm 7 cột:
 \end{figure}
 
 Dữ liệu được lấy từ ngày \textbf{18-11-2004} đến \textbf{06-03-2019}. 
-Dữ liệu được lấy từ thị trướng chứng khoán, chính vì vậy, có những ngày nghỉ như ngày lễ, ngày thứ 7, chủ nhật sẽ không có dữ liệu.
+Dữ liệu được lấy từ thị trường chứng khoán, chính vì vậy, có những ngày nghỉ như ngày lễ, ngày thứ 7, chủ nhật sẽ không có dữ liệu.
 Có vẻ như dữ liệu không có tính thời vụ trong năm, tính thời vụ trong mùa và không bị ảnh hưởng bởi ngày lễ. Số lượng bán ra không phụ thuộc vào giá.
 
 \subsection{Xử lý dữ liệu}
@@ -46,8 +46,12 @@ Chuyển thành bài toán học có giám sát
     \item Giữ lại cột: Date, Close. Đổi tên cột Date thành ds, Close thành y. Bỏ các cột còn lại(Theo quy chuẩn) \\
     \item Chuẩn hoá dữ liệu cột y bằng MinMaxScalar với khoảng (0, 1) \\
     \item Giữ 90 ngày cuối để xác minh. Những ngaỳ còn lại để đem train \\
-    \item Dữ liệu đầu vào: sẽ ra giá của 90 ngày trước ngày hiện tại \\
-    Dữ liệu đầu ra là giá vàng của ngày hiện tại +  89 ngày sau ngày hiện tại. Vậy sẽ bỏ qua 90 ngày đầu của bộ dữ liệu (thiếu dữ liệu ngày trước đó). 90 ngày cuối vẫn giữ lại. Đối với những ngày không có dữ liệu thì điền vào 0 \\
+	\item Đối với mỗi ngày, dữ liệu đầu vào: sẽ ra giá của 90 ngày trước ngày hiện tại, dữ liệu đầu ra là giá vàng của ngày hiện tại +  89 ngày sau ngày hiện tại. Vậy sẽ bỏ qua 90 ngày đầu của bộ dữ liệu (thiếu dữ liệu ngày trước đó). 90 ngày cuối vẫn giữ lại. Đối với những ngày không có dữ liệu thì điền vào 0 \\
+	\begin{figure}[h]
+		\center{\includegraphics[width=16cm]
+		{figure/preprocessing.png}}
+		\caption{\label{fig:preprocessing} Mô tả dữ liệu đâù vào đầu ra}
+	\end{figure}
 \end{itemize}
 \begin{table}[h]
 	\begin{tabularx}{\textwidth}{X | X | X | X | X | X | X } 
@@ -72,7 +76,7 @@ Chuyển thành bài toán học có giám sát
 	\caption{Dữ liệu đầu ra mẫu}
 \end{table}
 
-
+\clearpage
 \textbf{Đối với Prophet}
 Chỉ cần đưa dữ liệu vào
 \begin{itemize}
@@ -96,7 +100,7 @@ Chỉ cần đưa dữ liệu vào
 
 \subsection{Xây dựng mô hình}
 \textbf{Mạng học sâu} \\
-Mạng học sâu 1 gồm 5 lớp: LSTM -> Dropout -> LSTM -> Dropout -> Dense \\
+Mạng học sâu 1 là mạng LSTM chồng chất gồm 5 lớp: LSTM -> Dropout -> LSTM -> Dropout -> Dense \\
 \begin{minted}{python}
 complex_model = Sequential()
 complex_model.add(LSTM(units=100, input_shape=(X_train_vals.shape[1],
@@ -117,15 +121,37 @@ basic_model.compile(loss='mae', optimizer='adam')
 \end{minted}
 Đầu vào có dạng (90, 1) \\
 Đầu ra có dạng (90) (dự đoán 90 ngày cùng lúc) \\
-Mạng được train với loss function là \(MAE = \frac{1}{n}\sum_{i=1}^{n}|p_i - a_i|\), optimizer là Adam \\
+Mạng được train với loss function là \(MAE = \frac{1}{n}\sum_{i=1}^{n}|p_i - a_i|\), optimizer là Adam, số epochs là 60 \\
 \textbf{Prophet} \\
 Prophet với tham số mặc định, sử dụng daily seasonality, weekly seasonality, daily seasonality \\
 \begin{minted}{python}
 m = Prophet(yearly_seasonality=True, 
 weekly_seasonality=True, daily_seasonality=True)
 \end{minted}
-\subsection{Công thức để đánh giá}
-Sử dụng MAE để đánh giá. \\
+\subsection{Phương pháp đánh giá}
+Trong bài toán dự đoán này, ta sử dụng \textbf{Walk Forward Validation}.
+Có một vài cần quyết định quyết định để đưa ra:
+\begin{enumerate}
+	\item \textbf{Số lượng dữ liệu tối thiểu}: Đầu tiên, chúng ta phải chọn số lượng dữ liệu tối thiểu cần thiết để huấn luyện mô hình. Điều này có thể được coi là chiều rộng cửa sổ nếu sử dụng cửa sổ trượt.
+	\item \textbf{Cửa sổ trượt hoặc mở rộng}: Tiếp theo, chúng ta cần quyết định liệu mô hình sẽ được đào tạo trên tất cả dữ liệu mà nó có sẵn hay chỉ trên các dữ liệu gần đây nhất. Điều này xác định xem một cửa sổ trượt hoặc mở rộng sẽ được sử dụng.
+\end{enumerate}
+
+Sau khi chọn cấu hình hợp lý, ở bài toán này là cửa sổ mở rộng, các mô hình có thể được đào tạo và đánh giá.
+\begin{enumerate}
+	\item Bắt đầu từ đầu chuỗi thời gian, số lượng mẫu tối thiểu trong cửa sổ được sử dụng để huấn luyện một mô hình.
+	\item Mô hình đưa ra dự đoán cho bước tiếp theo.
+	\item Dự đoán được lưu trữ hoặc đánh giá theo giá trị đã biết.
+	\item Cửa sổ được mở rộng để bao gồm giá trị đã biết và quy trình được lặp lại (chuyển sang bước 1.)
+\end{enumerate}
+
+Có thể hình dung như hình minh hoạ sau đây:
+\begin{figure}[h]
+    \center{\includegraphics[width=10cm]
+    {figure/walkforward.png}}
+    \caption{\label{fig:walkforward} Minh hoạ Walk Forward Validation}
+\end{figure}
+
+Sử dụng công thức MAE để đánh giá. \\
 \[MAE = \frac{1}{n}\sum_{i=1}^{n}|p_i - a_i|\]
 \begin{minipage}[t]{.27\textwidth}
 	\textit{Trong đó}
@@ -137,23 +163,37 @@ Sử dụng MAE để đánh giá. \\
 	\(a_i\) là kết quả thực tế vào ngày thứ \(i\) \\
 \end{minipage} \\[5mm]
 
-
-\begin{figure}[!htb]
-	\center{\includegraphics[width=16cm]
-	{figure/result.png}}
-	\caption{\label{fig:predic-res} Biểu đồ kết quả}
-\end{figure}
-
+Lấy 90 ngày cuối trong bộ dữ liệu để xác minh. Ta được kết quả như bảng sau: \\
 
 \begin{table}[h]
 	\begin{tabularx}{\textwidth}{X | X }
 		%\hline
 		Mô hình	& MAE	  \\ \hline
-		Mạng học sâu 1	& 4.3483 \\ \hline
-		Mạng học sâu 2	& 1.1131 \\ \hline
+		Mạng học sâu 1 LSTM chồng chất	& 4.3483 \\ \hline
+		Mạng học sâu 2 đơn giản	& 1.1131 \\ \hline
 		Prophet	& 1.2269 \\
 	\end{tabularx}
 	\label{tab:result}
 	\caption{Kết quả}
 \end{table}
-Đánh ngạc nhiên là mạng có cấu trúc đơn giản hơn lại đưa ra đự đoán chính xác hơn. Và prophet không tinh chỉnh nhiều tham số gì lại đưa ra kết quả chính xác hơn mạng phức tạp.
+\begin{figure}[h]
+    \center{\includegraphics[width=16cm]
+    {figure/result.png}}
+    \caption{\label{fig:result-chart} Biểu đồ kết quả xác minh 90 ngày cuối}
+\end{figure}
+
+Tính trung bình MAE trong các bước \textbf{Walk Forward Validation}, với mỗi bước tăng thêm 360 mẫu dữ liệu để đự đoán 90 ngày sau. Ta được kết quả như bảng sau: \\
+
+\begin{table}[h]
+	\begin{tabularx}{\textwidth}{X | X }
+		%\hline
+		Mô hình	& MAE	  \\ \hline
+		Mạng học sâu 1 LSTM chồng chất & 17.1441 \\ \hline
+		Mạng học sâu 2 đơn giản & 16.0428 \\ \hline
+		Prophet	& 5.9291 \\
+	\end{tabularx}
+	\label{tab:resulttimewalking}
+	\caption{Kết quả \textbf{Walk Forward Validation}}
+\end{table}
+
+Prophet không tinh chỉnh nhiều tham số gì lại đưa ra kết quả chính xác hơn mạng LSTM chồng chất.
